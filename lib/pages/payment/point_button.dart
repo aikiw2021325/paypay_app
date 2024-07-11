@@ -23,16 +23,16 @@ class PointButton extends StatelessWidget {
         child: Row(
           children: [
             const PaddingM(),
-            const Icon(Icons.payment_rounded,size: 40,),
+            const Icon(Icons.local_parking,size: 40,),
             const PaddingM(),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
+                  const Row(
                     children: [
-                      const Text('PayPayポイント',
+                      Text('PayPayポイント',
                       style: TextStyle(fontWeight: FontWeight.bold),),
 
                     ],

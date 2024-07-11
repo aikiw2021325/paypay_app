@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:paypay_app/custom_widgets/paddings.dart';
 
-class BalanceButton extends StatelessWidget {
+class BalanceButton extends StatefulWidget {
   const BalanceButton({
     super.key,
     required this.money,
@@ -13,35 +13,67 @@ class BalanceButton extends StatelessWidget {
   final double width;
   final double height;
 
+  @override
+  State<BalanceButton> createState() => _BalanceButtonState();
+}
 
+class _BalanceButtonState extends State<BalanceButton> {
+  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     return Card(
       child: SizedBox(
-        height: height,
-        width: width,
+        height: widget.height,
+        width: widget.width,
         child: Row(
           children: [
             const PaddingM(),
-            const Icon(Icons.payment_rounded,size: 40,),
+            const Icon(Icons.featured_play_list_rounded,
+            color: Colors.grey,
+            size:  40,),
             const PaddingM(),
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Row(
                 children: [
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('PayPay残高',
-                      style: TextStyle(fontWeight: FontWeight.bold),),
-                      IconButton(onPressed: (){}, icon: const Icon(Icons.visibility_sharp)),
+                      Row(
+                        children: [
+                          const Text('PayPay残高',
+                          style: TextStyle(fontWeight: FontWeight.bold),),
+                          const PaddingS(),
+                          IconButton(
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(), 
+                            onPressed: (){
+                              isVisible = !isVisible;
+                              debugPrint(isVisible.toString());
+                              setState(() {
+                              });
+                            }, icon: const Icon(
+                            
+                            Icons.visibility_sharp,
+                            size: 20,
+                          )),
+                        ],
+                      ),
+                      if(isVisible == true) ...[
+                        Text('${widget.money}円'),
+                      ]else ... [
+                        const Text('*****円'),
+                      ]
                     ],
                   ),
-                  Text('$money''円'),
+                  
                 ],
               ),
             ),
-            IconButton(onPressed: (){}, icon: const Icon(Icons.chevron_right_sharp)),
+            const PaddingL(),
+            IconButton(onPressed: (){
+              
+            }, icon: const Icon(Icons.chevron_right_sharp)),
             const PaddingSS(),
           ],
         ),
