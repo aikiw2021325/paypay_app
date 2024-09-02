@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:paypay_app/pages/payment/balance_button.dart';
 import 'package:paypay_app/pages/payment/money_label.dart';
 import 'package:paypay_app/pages/payment/point_button.dart';
+import 'package:paypay_app/pages/payment/vcard_button.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key});
@@ -20,6 +21,7 @@ class TestPage extends StatelessWidget {
               money: 480,
             ),
             PointButton(point: 300, width: 300, height: 80),
+            VcardButton()
           ],
         ),
       ),
